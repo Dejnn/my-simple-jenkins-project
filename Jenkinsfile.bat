@@ -9,29 +9,29 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo 'Checking out code...'
-                sh 'ls -la'
+                bat 'ls -la'
                 echo "Code checked out."
             }
         }
         stage('Build') {
             steps {
                 echo 'Building the project...'
-                sh 'echo "Build successful!" > build_status.txt'
+                bat 'echo "Build successful!" > build_status.txt'
                 echo "Project built."
             }
         }
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                sh 'echo "All tests passed!" > test_results.txt'
+                bat 'echo "All tests passed!" > test_results.txt'
                 echo "Tests completed."
             }
         }
         stage('Deploy') {
             steps {
                 echo "Deploying the project with message: ${params.DEPLOYMENT_MESSAGE}"
-                sh "chmod +x app.sh || true"
-                sh "./app.sh '${params.DEPLOYMENT_MESSAGE}'"
+                bat "chmod +x app.sh || true"
+                bat "./app.sh '${params.DEPLOYMENT_MESSAGE}'"
                 echo "Project deployed."
             }
         }
