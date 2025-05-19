@@ -30,9 +30,7 @@ pipeline {
         stage('Deploy') {
                 steps {
                     echo "Deploying the project with message: ${params.DEPLOYMENT_MESSAGE}"
-                    // Рядок "chmod +x app.bat || true" більше не потрібен
-                    // Просто викликаємо app.bat, передаючи параметр
-                    bat ".\\app.bat \"${params.DEPLOYMENT_MESSAGE}\"" // Передаємо параметр у подвійних лапках
+                    bat ".\\app.bat \"${params.DEPLOYMENT_MESSAGE}\""
                     echo "Project deployed."
                 }
             }
