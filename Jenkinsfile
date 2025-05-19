@@ -9,7 +9,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo 'Checking out code...'
-                bat 'ls -la'
+                bat 'dir'
                 echo "Code checked out."
             }
         }
@@ -30,8 +30,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo "Deploying the project with message: ${params.DEPLOYMENT_MESSAGE}"
-                bat "chmod +x app.sh || true"
-                bat "./app.sh '${params.DEPLOYMENT_MESSAGE}'"
+                bat "chmod +x app.bat || true"
+                bat "./app.bat '${params.DEPLOYMENT_MESSAGE}'"
                 echo "Project deployed."
             }
         }
